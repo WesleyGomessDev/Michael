@@ -1,64 +1,75 @@
 
 import os
 import time
-import shutil
 
-# Poses alternadas para simular o Moonwalk
+# Quadros do dinossauro dançando
 poses = [
-    r"""
- O
-/|_
-/ \
+r"""
+              __
+             / _)
+    .-^^^-/ /
+ __/       /
+<__.|_|-|_|
+       / \__
+      /_____/
 """,
-    r"""
- O
-_|\ 
-/ \
+r"""
+              __
+             / _)
+    .-^^^-/ /
+ __/       /
+<__.|_|-|_|
+      __/ /
+     /____/
 """,
-    r"""
- O
-/|\
-/  \
+r"""
+              __
+             / _)
+    .-^^^-/ /
+ __/       /
+<__.|_|-|_|
+        \ \__
+         \___/
 """,
-    r"""
- O
-\|_
-/ \
+r"""
+              __
+             / _)
+    .-^^^-/ /
+ __/       /
+<__.|_|-|_|
+       __/ /
+      /____/
 """
 ]
 
-largura = 50
-posicao = largura - 10
-direcao = -1
+posicao = 30
 quadro = 0
+direcao = -1
 
 try:
     while True:
         os.system("cls")
 
-        print("=== MICHAEL JACKSON - MOONWALK ===")
-        print("Pressione Ctrl+C para sair\n")
+        print("=" * 48)
+        print("       🦖 DINOSSAURO MOONWALK 🕺")
+        print("          Jurassic Dance Club")
+        print("=" * 48)
+        print()
 
-        # Desenha o personagem na posição atual
-        linhas = poses[quadro % len(poses)].strip("\n").splitlines()
-
-        for linha in linhas:
+        for linha in poses[quadro % len(poses)].splitlines():
             print(" " * max(0, posicao) + linha)
 
-        # Move o Michael para trás
-        posicao += direcao * 2
+        print("\n       * deslizando para tras *")
 
-        # Quando chega à borda, muda de direção
+        posicao += direcao
+
         if posicao <= 0:
-            posicao = 0
-            direcao = 1
-        elif posicao >= largura - 10:
-            posicao = largura - 10
+            posicao = 30
             direcao = -1
 
         quadro += 1
-        time.sleep(0.12)
+        time.sleep(0.15)
 
 except KeyboardInterrupt:
     os.system("cls")
-    print("Michael encerrou o Moonwalk! 🕺")
+    print("🦖 O dinossauro encerrou a danca!")
